@@ -1018,6 +1018,16 @@ config KERNEL_PMEM_EBI_REGION
 	help
 	   Enable the in-kernel PMEM allocator to use EBI memory.
 
+config KERNEL_MSM_CONTIG_MEM_REGION
+	bool "Enable in-kernel contiguous memory region"
+	default n
+	depends on ANDROID_PMEM && (ARCH_MSM8X60 || ARCH_MSM8960 || ARCH_MSM8974)
+	help
+		Enable the in-kernel contiguous memory allocator. Sets up a
+		region of physically contiguous memory. This memory is
+		reserved during initialization, and can be used
+		generically.
+
 config KERNEL_PMEM_SMI_REGION
 	bool "Enable in-kernel PMEM region for SMI"
 	default y if ARCH_MSM8X60
